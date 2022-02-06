@@ -42,7 +42,7 @@ export default function TabsHome({ fixtures, results }) {
   }
 
   return (
-    <section className="px-4">
+    <section className="relative px-4">
       <Tab.Group>
         <Tab.List className="w-full max-w-sm flex p-1 space-x-1 bg-blue-900/50 rounded-xl">
           {Object.keys(footballData).map((category, idx) => (
@@ -115,6 +115,9 @@ export default function TabsHome({ fixtures, results }) {
           ))}
         </Tab.Panels>
       </Tab.Group>
+      <p className="absolute top-4 right-5 font-sans text-xs text-gray-200">
+        Australian Eastern Standard Time (AEST)
+      </p>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 import Default from '@layouts/default'
 import Hero from '@components/Hero'
 import TabsHome from '@components/TabsHome'
+import Footer from '@components/Footer'
 
 export default function Home({ fixtures, results }) {
   return (
@@ -9,6 +10,7 @@ export default function Home({ fixtures, results }) {
         <Hero />
         <TabsHome fixtures={fixtures.data} results={results.data} />
       </main>
+      <Footer />
     </Default>
   )
 }
