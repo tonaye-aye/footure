@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { Tab } from '@headlessui/react'
 
 function classNames(...classes) {
@@ -77,37 +78,46 @@ export default function TabsHome({ fixtures, results }) {
                     key={id}
                     className="relative p-3 rounded-md hover:bg-gray-100 cursor-pointer"
                   >
-                    <h1 className="font-sans font-bold text-lg text-blue-600">
-                      {league}
-                    </h1>
-                    {matches.map((item, idx) => {
-                      const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
-                      if ('time' in item) {
-                        return (
-                          <ul key={idx} className={matchCSS}>
-                            <li className="flex flex-col space-y-2">
-                              <p>{item.home}</p>
-                              <p>{item.away}</p>
-                            </li>
-                            <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                              @{convertDate(item.time)}
-                            </li>
-                          </ul>
-                        )
-                      } else {
-                        return (
-                          <ul key={idx} className={matchCSS}>
-                            <li className="flex flex-col space-y-2">
-                              <p>{item.home.team}</p>
-                              <p>{item.away.team}</p>
-                            </li>
-                            <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                              {item.home.goals}:{item.away.goals}
-                            </li>
-                          </ul>
-                        )
-                      }
-                    })}
+                    <Link
+                      href={`/competition/${league
+                        .toLowerCase()
+                        .replace(/\s/g, '')
+                        .replaceAll("'", '')}`}
+                    >
+                      <a>
+                        <h1 className="font-sans font-bold text-lg text-blue-600">
+                          {league}
+                        </h1>
+                        {matches.map((item, idx) => {
+                          const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
+                          if ('time' in item) {
+                            return (
+                              <ul key={idx} className={matchCSS}>
+                                <li className="flex flex-col space-y-2">
+                                  <p>{item.home}</p>
+                                  <p>{item.away}</p>
+                                </li>
+                                <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                                  @{convertDate(item.time)}
+                                </li>
+                              </ul>
+                            )
+                          } else {
+                            return (
+                              <ul key={idx} className={matchCSS}>
+                                <li className="flex flex-col space-y-2">
+                                  <p>{item.home.team}</p>
+                                  <p>{item.away.team}</p>
+                                </li>
+                                <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                                  {item.home.goals}:{item.away.goals}
+                                </li>
+                              </ul>
+                            )
+                          }
+                        })}
+                      </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

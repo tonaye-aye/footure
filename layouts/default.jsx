@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Navbar from '@components/Navbar'
+import Footer from '@components/Footer'
 
 export default function Layout({ title, children }) {
   return (
@@ -11,6 +12,7 @@ export default function Layout({ title, children }) {
       </Head>
       <Navbar />
       {children}
+      <Footer />
     </>
   )
 }
