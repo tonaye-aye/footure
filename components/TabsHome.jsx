@@ -11,6 +11,36 @@ export default function TabsHome({ fixtures, results }) {
     results
   })
 
+  const convertDate = (time) => {
+    // get Sydney time, and UTC time
+    let d = new Date()
+    let utc = d.toUTCString()
+    let arr = utc.split(' ')
+    let utcTime = arr[4].split(':')
+
+    // swap UTC time with match time
+    let matchTime = time.split(':')
+    utcTime[0] = matchTime[0]
+    utcTime[1] = matchTime[1]
+    let newTime = utcTime.join(':')
+
+    // put new utc time back into string
+    arr[4] = newTime
+    let newUtc = arr.join(' ')
+
+    // convert new UTC date back to Sydney time
+    let syd = new Date(newUtc)
+    let sydHours = syd.getHours()
+    let sydMinutes = syd.getMinutes()
+    if (sydHours < 10) {
+      sydHours = `0${sydHours}`
+    }
+    if (sydMinutes === 0) {
+      sydMinutes = `${sydMinutes}0`
+    }
+    return `${sydHours}:${sydMinutes}`
+  }
+
   return (
     <section className="px-4">
       <Tab.Group>
@@ -60,7 +90,7 @@ export default function TabsHome({ fixtures, results }) {
                               <p>{item.away}</p>
                             </li>
                             <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                              @{item.time}
+                              @{convertDate(item.time)}
                             </li>
                           </ul>
                         )
