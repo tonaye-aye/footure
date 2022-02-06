@@ -5,56 +5,26 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function TabsHome() {
-  let [categories] = useState({
-    Recent: [
-      {
-        id: 1,
-        title: 'Does drinking coffee make you smarter?',
-        date: '5h ago',
-        commentCount: 5,
-        shareCount: 2
-      },
-      {
-        id: 2,
-        title: "So you've bought coffee... now what?",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2
-      }
-    ],
-    Popular: [
-      {
-        id: 1,
-        title: 'Is tech making coffee better or worse?',
-        date: 'Jan 7',
-        commentCount: 29,
-        shareCount: 16
-      },
-      {
-        id: 2,
-        title: 'The most innovative things happening in coffee',
-        date: 'Mar 19',
-        commentCount: 24,
-        shareCount: 12
-      }
-    ]
+export default function TabsHome({ fixtures, results }) {
+  let [footballData] = useState({
+    fixtures,
+    results
   })
 
   return (
     <section className="px-4">
       <Tab.Group>
-        <Tab.List className="w-full max-w-sm flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
-          {Object.keys(categories).map((category) => (
+        <Tab.List className="w-full max-w-sm flex p-1 space-x-1 bg-blue-900/50 rounded-xl">
+          {Object.keys(footballData).map((category, idx) => (
             <Tab
-              key={category}
+              key={idx}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-sm leading-5 font-medium text-blue-200 rounded-lg transition ease-in duration-300',
-                  'focus:outline-none focus:ring-2 ring-offset-1 ring-offset-blue-600 ring-gray-900 ring-opacity-60',
+                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-lg transision ease-in duration-100 first-letter:capitalize',
+                  'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60',
                   selected
-                    ? 'text-white bg-gray-900 shadow'
-                    : 'text-blue-400 hover:bg-gray-800 hover:text-white'
+                    ? 'text-blue-900 bg-white shadow'
+                    : 'hover:bg-gray-900/50 hover:text-white'
                 )
               }
             >
@@ -63,39 +33,51 @@ export default function TabsHome() {
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
-          {Object.values(categories).map((posts, idx) => (
+          {Object.values(footballData).map((items, idx) => (
             <Tab.Panel
               key={idx}
               className={classNames(
-                'bg-gray-400 rounded-xl p-3',
-                'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60'
+                'bg-white rounded-xl p-3',
+                'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60'
               )}
             >
               <ul>
-                {posts.map((post) => (
+                {items.map(({ id, league, matches }) => (
                   <li
-                    key={post.id}
-                    className="relative p-3 rounded-md hover:bg-coolGray-100"
+                    key={id}
+                    className="relative p-3 rounded-md hover:bg-gray-100 cursor-pointer"
                   >
-                    <h3 className="text-sm font-medium leading-5">
-                      {post.title}
-                    </h3>
-
-                    <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                      <li>{post.date}</li>
-                      <li>&middot;</li>
-                      <li>{post.commentCount} comments</li>
-                      <li>&middot;</li>
-                      <li>{post.shareCount} shares</li>
-                    </ul>
-
-                    <a
-                      href="#"
-                      className={classNames(
-                        'absolute inset-0 rounded-md',
-                        'focus:z-10 focus:outline-none focus:ring-2 ring-blue-400'
-                      )}
-                    />
+                    <h1 className="font-sans font-bold text-lg text-blue-600">
+                      {league}
+                    </h1>
+                    {matches.map((item, idx) => {
+                      const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
+                      if ('time' in item) {
+                        return (
+                          <ul key={idx} className={matchCSS}>
+                            <li className="flex flex-col space-y-2">
+                              <p>{item.home}</p>
+                              <p>{item.away}</p>
+                            </li>
+                            <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                              @{item.time}
+                            </li>
+                          </ul>
+                        )
+                      } else {
+                        return (
+                          <ul key={idx} className={matchCSS}>
+                            <li className="flex flex-col space-y-2">
+                              <p>{item.home.team}</p>
+                              <p>{item.away.team}</p>
+                            </li>
+                            <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                              {item.home.goals}:{item.away.goals}
+                            </li>
+                          </ul>
+                        )
+                      }
+                    })}
                   </li>
                 ))}
               </ul>

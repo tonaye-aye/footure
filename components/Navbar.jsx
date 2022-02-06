@@ -8,7 +8,7 @@ export default function Navbar() {
       <p className="text-xl ml-3 font-sans text-blue-300 font-semibold">
         Football Friend.
       </p>
-      <p className="grow text-right font-sans text-white font-light">About</p>
+      <p className="grow text-right font-sans text-white font-light">Tips</p>
     </nav>
   )
 }
