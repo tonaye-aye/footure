@@ -51,7 +51,7 @@ export default function TabsHome({ fixtures, results }) {
               key={idx}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-lg transision ease-in duration-100 first-letter:capitalize',
+                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-lg transision ease-in duration-100 capitalize',
                   'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60',
                   selected
                     ? 'text-blue-900 bg-white shadow'
@@ -81,7 +81,7 @@ export default function TabsHome({ fixtures, results }) {
                     <Link
                       href={`/competition/${league
                         .toLowerCase()
-                        .replace(/\s/g, '')
+                        .replace(/\s/g, '-')
                         .replaceAll("'", '')}`}
                     >
                       <a>
