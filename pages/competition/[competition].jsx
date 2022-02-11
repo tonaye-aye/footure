@@ -6,6 +6,7 @@ export default function Competition() {
   const { competition } = router.query
 
   const competitionTitle = (text) => {
+    if (!text) return
     let arr = text.split('-')
     if (arr[0] === 'womens') {
       arr[0] = "women's"
