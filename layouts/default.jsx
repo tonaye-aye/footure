@@ -11,7 +11,7 @@ export default function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      {children}
+      <main className="w-full max-w-5xl mx-auto">{children}</main>
       <Footer />
     </>
   )

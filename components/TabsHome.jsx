@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Tab } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/outline'
+import { ChevronUpIcon } from '@heroicons/react/outline'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -68,59 +71,79 @@ export default function TabsHome({ fixtures, results }) {
             <Tab.Panel
               key={idx}
               className={classNames(
-                'bg-white rounded-xl p-3',
+                'bg-blue-100 rounded-xl p-2 pt-3',
                 'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60'
               )}
             >
-              <ul>
-                {items.map(({ id, league, matches }) => (
-                  <li
-                    key={id}
-                    className="relative p-3 rounded-md hover:bg-gray-100 cursor-pointer"
-                  >
-                    <Link
-                      href={`/competition/${league
-                        .toLowerCase()
-                        .replace(/\s/g, '-')
-                        .replaceAll("'", '')}`}
-                    >
-                      <a>
-                        <h1 className="font-sans font-bold text-lg text-blue-600">
-                          {league}
-                        </h1>
-                        {matches.map((item, idx) => {
-                          const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
-                          if ('time' in item) {
-                            return (
-                              <ul key={idx} className={matchCSS}>
-                                <li className="flex flex-col space-y-2">
-                                  <p>{item.home}</p>
-                                  <p>{item.away}</p>
-                                </li>
-                                <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                                  @{convertDate(item.time)}
-                                </li>
-                              </ul>
-                            )
-                          } else {
-                            return (
-                              <ul key={idx} className={matchCSS}>
-                                <li className="flex flex-col space-y-2">
-                                  <p>{item.home.team}</p>
-                                  <p>{item.away.team}</p>
-                                </li>
-                                <li className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                                  {item.home.goals}:{item.away.goals}
-                                </li>
-                              </ul>
-                            )
-                          }
-                        })}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {items.map(({ id, league, matches }) => (
+                <div
+                  key={id}
+                  className="relative rounded-xl bg-white hover:bg-gray-200/75 mb-2 cursor-pointer transition duration-500 ease-in-out"
+                >
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="py-4 px-3 w-full flex items-center justify-between text-left bg-blue-700 hover:bg-blue-600 rounded-xl transition duration-500 ease-in-out">
+                          <h1 className="font-sans text-md text-white">
+                            {league}
+                          </h1>
+                          {open ? (
+                            <ChevronUpIcon className="h-5 w-5 text-blue-400" />
+                          ) : (
+                            <ChevronDownIcon className="h-5 w-5 text-blue-400" />
+                          )}
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="py-3 px-4">
+                          {matches.map((item, idx) => {
+                            const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
+                            if ('time' in item) {
+                              return (
+                                <Link
+                                  href={`/competition/${league
+                                    .toLowerCase()
+                                    .replace(/\s/g, '-')
+                                    .replaceAll("'", '')}`}
+                                  key={idx}
+                                >
+                                  <a className={matchCSS}>
+                                    <div className="flex flex-col space-y-2">
+                                      <p>{item.home}</p>
+                                      <p>{item.away}</p>
+                                    </div>
+                                    <div className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                                      @{convertDate(item.time)}
+                                    </div>
+                                  </a>
+                                </Link>
+                              )
+                            } else {
+                              return (
+                                <Link
+                                  href={`/competition/${league
+                                    .toLowerCase()
+                                    .replace(/\s/g, '-')
+                                    .replaceAll("'", '')}`}
+                                  key={idx}
+                                >
+                                  <a className={matchCSS}>
+                                    <div className="flex flex-col space-y-2">
+                                      <p>{item.home.team}</p>
+                                      <p>{item.away.team}</p>
+                                    </div>
+                                    <div className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
+                                      {item.home.goals}:{item.away.goals}
+                                    </div>
+                                  </a>
+                                </Link>
+                              )
+                            }
+                          })}
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                </div>
+              ))}
             </Tab.Panel>
           ))}
         </Tab.Panels>

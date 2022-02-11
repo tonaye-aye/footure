@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Default from '@layouts/default'
-import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
 
 export default function Competition() {
   const router = useRouter()
@@ -21,49 +18,12 @@ export default function Competition() {
 
   return (
     <Default title="Home">
-      <main className="w-full max-w-5xl mx-auto">
-        <section className="px-4">
-          <h1 className="py-12 font-bold text-white text-xl lg:text-3xl capitalize">
-            {competitionTitle(competition)}
-          </h1>
-          <div className="w-full p-2 mx-auto bg-white rounded-xl">
-            <Disclosure>
-              {({ open }) => (
-                <>
-                  <Disclosure.Button className={discourseCSS}>
-                    <span>Fixtures</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? 'transform rotate-180' : ''
-                      } w-5 h-5 text-white`}
-                    />
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                    Some text here.
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
-            <Disclosure as="div" className="mt-2">
-              {({ open }) => (
-                <>
-                  <Disclosure.Button className={discourseCSS}>
-                    <span>Results</span>
-                    <ChevronUpIcon
-                      className={`${
-                        open ? 'transform rotate-180' : ''
-                      } w-5 h-5 text-white`}
-                    />
-                  </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                    No.
-                  </Disclosure.Panel>
-                </>
-              )}
-            </Disclosure>
-          </div>
-        </section>
-      </main>
+      <section className="px-4">
+        <h1 className="py-12 font-bold text-white text-xl lg:text-3xl capitalize">
+          {competitionTitle(competition)}
+        </h1>
+        <div className="w-full p-2 mx-auto bg-white rounded-xl"></div>
+      </section>
     </Default>
   )
 }

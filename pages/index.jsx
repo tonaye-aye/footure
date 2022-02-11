@@ -5,10 +5,8 @@ import TabsHome from '@components/TabsHome'
 export default function Home({ fixtures, results }) {
   return (
     <Default title="Home">
-      <main className="w-full max-w-5xl mx-auto">
-        <Hero />
-        <TabsHome fixtures={fixtures.data} results={results.data} />
-      </main>
+      <Hero />
+      <TabsHome fixtures={fixtures.data} results={results.data} />
     </Default>
   )
 }
