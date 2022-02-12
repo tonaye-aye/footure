@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Navbar from '@components/Navbar'
 import Footer from '@components/Footer'
 
-export default function Layout({ title, children }) {
+export default function Container({ title, children }) {
   return (
     <>
       <Head>

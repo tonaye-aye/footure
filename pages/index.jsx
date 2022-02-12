@@ -1,6 +1,6 @@
 import Container from '@layouts/Container'
 import Hero from '@components/Hero'
-import TabsHome from '@components/TabsHome'
+import TabsHome from '@components/Tabshome'
 
 export default function Home({ fixtures, results }) {
   return (

@@ -1,4 +1,4 @@
-import ListItems from '@components/ListItems'
+import ListItems from '@components/Listitems'
 
 export default function CompetitionDetails({ competition, fixtures, results }) {
   let fixturesArr = fixtures.filter(({ league }) => {
