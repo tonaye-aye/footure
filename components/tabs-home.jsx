@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { DateHandler } from '@lib/date-handler'
+
+// headless UI + Icons
 import { Tab } from '@headlessui/react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { ChevronUpIcon } from '@heroicons/react/outline'
-
-import { DateHandler } from '@lib/date-handler'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
