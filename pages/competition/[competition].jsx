@@ -14,8 +14,8 @@ export default function Competition({ fixtures, results }) {
 
   return (
     <Container title="Home">
-      <div className="w-full relative flex items-center justify-between p-5 py-8 mb-3">
-        <h1 className="font-bold text-white text-xl lg:text-3xl capitalize">
+      <div className="w-full relative flex items-center justify-between pt-8 pb-2 mb-3">
+        <h1 className="font-bold text-white text-xl capitalize">
           {handleCompetitonTitle(competition)}
         </h1>
         <DropDown fixtures={fixtures.data} results={results.data} />

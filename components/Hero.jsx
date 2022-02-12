@@ -3,7 +3,7 @@ import heroImage from '../public/assets/hero.svg'
 
 export default function Hero() {
   return (
-    <section className="my-12 mb-4 grid items-center grid-cols-3 gap-x-4 sm:gap-x-24">
+    <section className="mt-3 mb-5 grid items-center grid-cols-3 gap-x-4 sm:gap-x-24">
       <h1 className="col-span-3 sm:col-span-2 font-bold text-white text-xl lg:text-3xl">
         Navigate the latest fixtures, results and everything{' '}
         <span className="text-blue-600">football.</span> Made for Australians.

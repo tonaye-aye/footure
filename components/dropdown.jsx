@@ -43,18 +43,20 @@ export default function DropDown({ fixtures, results }) {
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             {competitions.map((comp, idx) => (
-              <div key={idx} className="px-1 py-1">
-                <Link
-                  href={`/competition/${comp
-                    .toLowerCase()
-                    .replace(/\s/g, '-')
-                    .replaceAll("'", '')}`}
-                >
-                  <a className="font-sans hover:bg-blue-200 text-gray-900 flex rounded-md items-center w-full px-2 py-2 text-sm">
-                    {comp}
-                  </a>
-                </Link>
-              </div>
+              <Menu.Item key={idx}>
+                <div className="px-1 py-1">
+                  <Link
+                    href={`/competition/${comp
+                      .toLowerCase()
+                      .replace(/\s/g, '-')
+                      .replaceAll("'", '')}`}
+                  >
+                    <a className="font-sans hover:bg-blue-600 text-gray-900 hover:text-white flex rounded-md items-center w-full px-2 py-2 text-sm">
+                      {comp}
+                    </a>
+                  </Link>
+                </div>
+              </Menu.Item>
             ))}
           </Menu.Items>
         </Transition>

@@ -13,7 +13,6 @@ export default function Navbar() {
           </p>
         </a>
       </Link>
-      <p className="grow text-right font-sans text-white font-light">Tips</p>
     </nav>
   )
 }

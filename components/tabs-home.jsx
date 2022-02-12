@@ -59,7 +59,7 @@ export default function TabsHome({ fixtures, results }) {
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="p-3 w-full flex items-center justify-between text-left text-blue-800 bg-blue-100 hover:bg-blue-200 rounded-xl transition duration-500 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75">
+                        <Disclosure.Button className="p-3 w-full flex items-center justify-between text-left text-blue-800 bg-blue-100 hover:bg-blue-200 rounded-lg transition duration-500 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75">
                           <h1 className="font-sans font-semibold text-sm">
                             {league}
                           </h1>
