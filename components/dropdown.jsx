@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-export default function DropDown({ fixtures, results }) {
+export default function Dropdown({ fixtures, results }) {
   const [competitions, setCompetitions] = useState([])
 
   const checkCompeition = (comp) => {

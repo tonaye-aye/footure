@@ -1,6 +1,6 @@
 import Listitems from '@components/Listitems'
 
-export default function CompetitionDetails({ competition, fixtures, results }) {
+export default function Details({ competition, fixtures, results }) {
   let fixturesArr = fixtures.filter(({ league }) => {
     return league.toLowerCase() === competition
   })
