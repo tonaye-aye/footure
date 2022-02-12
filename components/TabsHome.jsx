@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ListItems from '@components/ListIems'
+import ListItems from '@components/ListItems'
 import DropDown from '@components/DropDown'
 
 // headless UI + Icons
