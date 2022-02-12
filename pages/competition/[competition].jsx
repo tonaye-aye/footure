@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Default from '@layouts/default'
+import Container from '@layouts/container'
 
 export default function Competition() {
   const router = useRouter()
@@ -18,13 +18,10 @@ export default function Competition() {
     'flex justify-between w-full px-4 py-2 text-sm font-sans font-medium text-left text-blue-100 bg-blue-900 rounded-xl hover:bg-blue-700 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 transition ease-in duration-300'
 
   return (
-    <Default title="Home">
-      <section className="px-4">
-        <h1 className="py-12 font-bold text-white text-xl lg:text-3xl capitalize">
-          {competitionTitle(competition)}
-        </h1>
-        <div className="w-full p-2 mx-auto bg-white rounded-xl"></div>
-      </section>
-    </Default>
+    <Container title="Home">
+      <h1 className="py-12 font-bold text-white text-xl lg:text-3xl capitalize">
+        {competitionTitle(competition)}
+      </h1>
+    </Container>
   )
 }

@@ -5,6 +5,8 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { ChevronUpIcon } from '@heroicons/react/outline'
 
+import { DateHandler } from '@lib/date-handler'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -15,50 +17,24 @@ export default function TabsHome({ fixtures, results }) {
     results
   })
 
-  const convertDate = (time) => {
-    // get Sydney time, and UTC time
-    let d = new Date()
-    let utc = d.toUTCString()
-    let arr = utc.split(' ')
-    let utcTime = arr[4].split(':')
-
-    // swap UTC time with match time
-    let matchTime = time.split(':')
-    utcTime[0] = matchTime[0]
-    utcTime[1] = matchTime[1]
-    let newTime = utcTime.join(':')
-
-    // put new utc time back into string
-    arr[4] = newTime
-    let newUtc = arr.join(' ')
-
-    // convert new UTC date back to Sydney time
-    let syd = new Date(newUtc)
-    let sydHours = syd.getHours()
-    let sydMinutes = syd.getMinutes()
-    if (sydHours < 10) {
-      sydHours = `0${sydHours}`
-    }
-    if (sydMinutes === 0) {
-      sydMinutes = `${sydMinutes}0`
-    }
-    return `${sydHours}:${sydMinutes}`
+  const handleDate = (time) => {
+    return DateHandler(time)
   }
 
   return (
-    <section className="relative px-4">
+    <>
       <Tab.Group>
-        <Tab.List className="w-full max-w-sm flex p-1 space-x-1 bg-blue-900/50 rounded-xl">
+        <Tab.List className="w-full max-w-sm flex bg-blue-900/50 rounded-md">
           {Object.keys(footballData).map((category, idx) => (
             <Tab
               key={idx}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-lg transision ease-in duration-100 capitalize',
-                  'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60',
+                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-md transision ease-in duration-100 capitalize',
+                  'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-700 ring-blue-700 ring-opacity-60',
                   selected
                     ? 'text-blue-900 bg-white shadow'
-                    : 'hover:bg-gray-900/50 hover:text-white'
+                    : 'hover:bg-blue-900'
                 )
               }
             >
@@ -111,7 +87,7 @@ export default function TabsHome({ fixtures, results }) {
                                       <p>{item.away}</p>
                                     </div>
                                     <div className="text-md leading-none text-blue-500 p-1.5 bg-gray-200/50 rounded-md">
-                                      @{convertDate(item.time)}
+                                      @{handleDate(item.time)}
                                     </div>
                                   </a>
                                 </Link>
@@ -148,9 +124,9 @@ export default function TabsHome({ fixtures, results }) {
           ))}
         </Tab.Panels>
       </Tab.Group>
-      <p className="absolute top-4 right-5 font-sans text-xs text-gray-200">
+      <p className="hidden md:absolute top-4 right-5 font-sans text-xs text-gray-200">
         Australian Eastern Standard Time (AEST)
       </p>
-    </section>
+    </>
   )
 }
