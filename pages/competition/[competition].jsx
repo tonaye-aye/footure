@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { CompetitionHandler } from '@lib/competitionHandler'
-import Container from '@layouts/container'
+import Default from '@layouts/default'
 import Details from '@components/Details'
 import Dropdown from '@components/Dropdown'
 
@@ -13,7 +13,7 @@ export default function Competition({ fixtures, results }) {
   }
 
   return (
-    <Container title="Home">
+    <Default title="Home">
       <div className="w-full relative flex items-center justify-between pt-8 pb-2 mb-3">
         <h1 className="font-bold text-white text-xl capitalize">
           {handleCompetitonTitle(competition)}
@@ -27,7 +27,7 @@ export default function Competition({ fixtures, results }) {
           results={results.data}
         />
       </div>
-    </Container>
+    </Default>
   )
 }
 
