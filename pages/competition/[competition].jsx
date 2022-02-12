@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { CompetitionHandler } from '@lib/competitionHandler'
-import Container from '@layouts/Container'
+import Container from '@layouts/container'
 import Details from '@components/Details'
 import Dropdown from '@components/Dropdown'
 

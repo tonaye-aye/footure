@@ -1,4 +1,4 @@
-import Container from '@layouts/Container'
+import Container from '@layouts/container'
 import Hero from '@components/Hero'
 import Tabshome from '@components/Tabshome'
 
