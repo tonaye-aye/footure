@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DateHandler } from '@lib/date-handler'
+import { DateHandler } from '@lib/dateHandler'
 
 export default function ListItems({ league, matches }) {
   return (
