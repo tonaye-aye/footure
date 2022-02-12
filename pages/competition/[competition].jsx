@@ -18,14 +18,14 @@ export default function Competition({ fixtures, results }) {
         <h1 className="font-bold text-white text-xl lg:text-3xl capitalize">
           {handleCompetitonTitle(competition)}
         </h1>
-        <DropDown
-          fixtures={fixtures.data}
-          results={results.data}
-          path={handleCompetitonTitle(competition)}
-        />
+        <DropDown fixtures={fixtures.data} results={results.data} />
       </div>
       <div className="bg-white p-2 rounded-xl transition duration-500 ease-in-out">
-        <CompetitionDetails fixtures={fixtures.data} results={results.data} />
+        <CompetitionDetails
+          competition={handleCompetitonTitle(competition)}
+          fixtures={fixtures.data}
+          results={results.data}
+        />
       </div>
     </Container>
   )
