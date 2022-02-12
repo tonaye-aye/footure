@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
-import { CompetitionHandler } from '@lib/competition-handler'
-import Container from '@layouts/container'
-import CompetitionDetails from '@components/competition-details'
-import DropDown from '@components/dropdown'
+import { CompetitionHandler } from '@lib/competitionHandler'
+import Container from '@layouts/Container'
+import CompetitionDetails from '@components/CompetitionDetails'
+import DropDown from '@components/DropDown'
 
 export default function Competition({ fixtures, results }) {
   const router = useRouter()
