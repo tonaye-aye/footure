@@ -24,17 +24,17 @@ export default function TabsHome({ fixtures, results }) {
   return (
     <>
       <Tab.Group>
-        <Tab.List className="w-full max-w-sm flex bg-blue-900/50 rounded-md">
+        <Tab.List className="w-full max-w-sm flex bg-blue-900/25 rounded-lg mb-3">
           {Object.keys(footballData).map((category, idx) => (
             <Tab
               key={idx}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-md leading-5 font-medium text-blue-200 rounded-md transision ease-in duration-100 capitalize',
+                  'w-full py-2 text-md leading-5 font-medium text-blue-200 rounded-lg transision ease-in duration-300 capitalize',
                   'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-700 ring-blue-700 ring-opacity-60',
                   selected
-                    ? 'text-blue-900 bg-white shadow'
-                    : 'hover:bg-blue-900'
+                    ? 'text-blue-900 bg-blue-100 shadow'
+                    : 'hover:bg-blue-900/50'
                 )
               }
             >
@@ -42,25 +42,25 @@ export default function TabsHome({ fixtures, results }) {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className="mt-2">
+        <Tab.Panels>
           {Object.values(footballData).map((items, idx) => (
             <Tab.Panel
               key={idx}
               className={classNames(
-                'bg-blue-100 rounded-xl p-2 pt-3',
+                'bg-white rounded-xl p-2 flex flex-col gap-2',
                 'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-500 ring-blue-800 ring-opacity-60'
               )}
             >
               {items.map(({ id, league, matches }) => (
                 <div
                   key={id}
-                  className="relative rounded-xl bg-white hover:bg-gray-200/75 mb-2 cursor-pointer transition duration-500 ease-in-out"
+                  className="relative cursor-pointer transition duration-500 ease-in-out"
                 >
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="py-4 px-3 w-full flex items-center justify-between text-left bg-blue-700 hover:bg-blue-600 rounded-xl transition duration-500 ease-in-out">
-                          <h1 className="font-sans text-md text-white">
+                        <Disclosure.Button className="p-3 w-full flex items-center justify-between text-left text-blue-800 bg-blue-100 hover:bg-blue-200 rounded-xl transition duration-500 ease-in-out focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75">
+                          <h1 className="font-sans font-semibold text-sm">
                             {league}
                           </h1>
                           {open ? (
@@ -69,9 +69,9 @@ export default function TabsHome({ fixtures, results }) {
                             <ChevronDownIcon className="h-5 w-5 text-blue-400" />
                           )}
                         </Disclosure.Button>
-                        <Disclosure.Panel className="py-3 px-4">
+                        <Disclosure.Panel>
                           {matches.map((item, idx) => {
-                            const matchCSS = `flex items-center justify-between mt-1 py-2 space-x-3 text-sm font-sans font-normal leading-4 text-gray-900 border-b border-gray-200/75`
+                            const matchCSS = `flex items-center justify-between p-3 rounded-xl text-sm font-sans leading-4 text-gray-900 hover:bg-blue-100/50`
                             if ('time' in item) {
                               return (
                                 <Link
