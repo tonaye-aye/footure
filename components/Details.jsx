@@ -1,4 +1,4 @@
-import ListItems from '@components/Listitems'
+import Listitems from '@components/Listitems'
 
 export default function CompetitionDetails({ competition, fixtures, results }) {
   let fixturesArr = fixtures.filter(({ league }) => {
@@ -20,7 +20,7 @@ export default function CompetitionDetails({ competition, fixtures, results }) {
             <h1 className="p-3 font-sans font-semibold text-sm text-blue-800 bg-blue-100 rounded-xl">
               Fixtures
             </h1>
-            <ListItems league={league} matches={matches} />
+            <Listitems league={league} matches={matches} />
           </div>
         ))
       )}
@@ -34,7 +34,7 @@ export default function CompetitionDetails({ competition, fixtures, results }) {
             <h1 className="p-3 font-sans font-semibold text-sm text-blue-800 bg-blue-100 rounded-xl">
               Results
             </h1>
-            <ListItems league={league} matches={matches} />
+            <Listitems league={league} matches={matches} />
           </div>
         ))
       )}

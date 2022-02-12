@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ListItems from '@components/Listitems'
+import Listitems from '@components/Listitems'
 import DropDown from '@components/Dropdown'
 
 // headless UI + Icons
@@ -70,7 +70,7 @@ export default function TabsHome({ fixtures, results }) {
                           )}
                         </Disclosure.Button>
                         <Disclosure.Panel>
-                          <ListItems league={league} matches={matches} />
+                          <Listitems league={league} matches={matches} />
                         </Disclosure.Panel>
                       </>
                     )}

@@ -1,12 +1,12 @@
 import Container from '@layouts/Container'
 import Hero from '@components/Hero'
-import TabsHome from '@components/Tabshome'
+import Tabshome from '@components/Tabshome'
 
 export default function Home({ fixtures, results }) {
   return (
     <Container title="Home">
       <Hero />
-      <TabsHome fixtures={fixtures.data} results={results.data} />
+      <Tabshome fixtures={fixtures.data} results={results.data} />
     </Container>
   )
 }
