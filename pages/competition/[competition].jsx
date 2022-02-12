@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { CompetitionHandler } from '@lib/competitionHandler'
 import Container from '@layouts/Container'
-import CompetitionDetails from '@components/Details'
+import Details from '@components/Details'
 import DropDown from '@components/Dropdown'
 
 export default function Competition({ fixtures, results }) {
@@ -21,7 +21,7 @@ export default function Competition({ fixtures, results }) {
         <DropDown fixtures={fixtures.data} results={results.data} />
       </div>
       <div className="bg-white p-2 rounded-xl transition duration-500 ease-in-out">
-        <CompetitionDetails
+        <Details
           competition={handleCompetitonTitle(competition)}
           fixtures={fixtures.data}
           results={results.data}
