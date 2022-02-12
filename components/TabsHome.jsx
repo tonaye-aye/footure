@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Listitems from '@components/Listitems'
-import DropDown from '@components/Dropdown'
+import Dropdown from '@components/Dropdown'
 
 // headless UI + Icons
 import { Tab } from '@headlessui/react'
@@ -40,7 +40,7 @@ export default function TabsHome({ fixtures, results }) {
               </Tab>
             ))}
           </Tab.List>
-          <DropDown fixtures={fixtures} results={results} />
+          <Dropdown fixtures={fixtures} results={results} />
         </div>
         <Tab.Panels>
           {Object.values(footballData).map((items, idx) => (

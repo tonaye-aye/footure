@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { DateHandler } from '@lib/dateHandler'
 
-export default function ListItems({ league, matches }) {
+export default function Listitems({ league, matches }) {
   return (
     <>
       {matches.map((item, idx) => {
