@@ -5,7 +5,7 @@ export default function Listitems({ league, matches }) {
   return (
     <>
       {matches.map((item, idx) => {
-        const matchCSS = `group flex items-center justify-between p-3 rounded-xl text-sm font-sans leading-4 text-gray-900 hover:bg-blue-600 hover:text-white transition duration-500 ease-in-out`
+        const matchCSS = `group flex items-center justify-between p-3 rounded-xl text-sm font-sans leading-4 text-gray-900 hover:bg-blue-900 hover:text-white transition duration-500 ease-in-out`
         if ('time' in item) {
           return (
             <Link
